@@ -1,0 +1,217 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c0\c0\c0\c1176;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 R script September 13, 2022\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Source: \
+https://learn.gencore.bio.nyu.edu/rna-seq-analysis/gene-set-enrichment-analysis/\
+http://bioconductor.org/packages/release/BiocViews.html#___OrgDb\
+https://stackoverflow.com/questions/32771517/package-cannot-be-unloaded-in-r-cannot-install-package\
+\
+library(clusterProfiler)\
+\
+library(tidygraph)\
+\
+library(tweenr)\
+\
+library(pathview)\
+\
+library(enrichplot)\
+\
+library(ggplot2)\
+organism = "org.Hs.eg.db"\
+BiocManager::install(organism, character.only = TRUE)\
+\
+library(organism, character.only = TRUE)\
+\
+setwd("~/Documents/sorted bam files plasma ")\
+\
+\
+df = read.csv("DERNA GSEA Aug 24.csv", header = TRUE)\
+original_gene_list <- df$log2FoldChange\
+names(original_gene_list) <- df$Gene.ID\
+gene_list <- na.omit(original_gene_list)\
+gene_list = sort(gene_list, decreasing = TRUE)\
+keytypes(org.Hs.eg.db)\
+\
+[1] "ACCNUM"       "ALIAS"        "ENSEMBL"     \
+ [4] "ENSEMBLPROT"  "ENSEMBLTRANS" "ENTREZID"    \
+ [7] "ENZYME"       "EVIDENCE"     "EVIDENCEALL" \
+[10] "GENENAME"     "GENETYPE"     "GO"          \
+[13] "GOALL"        "IPI"          "MAP"         \
+[16] "OMIM"         "ONTOLOGY"     "ONTOLOGYALL" \
+[19] "PATH"         "PFAM"         "PMID"        \
+[22] "PROSITE"      "REFSEQ"       "SYMBOL"      \
+[25] "UCSCKG"       "UNIPROT"     \
+\
+\
+gse <- gseGO(geneList = gene_list, ont = "ALL", keyType = "ALIAS", nPerm = 10000, minGSSize = 3, maxGSSize = 800, pvalueCutoff = 0.05, verbose = TRUE, OrgDb = organism, pAdjustMethod = "none")\
+\
+require(DOSE)\
+\
+dotplot(gse, showCategory=10, split=".sign") + facet_grid(.~.sign)\
+\
+BiocManager::install("ggnewscale")\
+\
+library(ggnewscale)\
+\
+cnetplot(gse, categorySize="pvalue", foldChange=gene_list, showCategory = 3)\
+\
+BiocManager::install("ggridges")\
+\
+library(ggridges)\
+\
+ridgeplot(gse) + labs(x = "enrichment distribution")\
+\
+\
+gseaplot(gse, by = "all", title = gse$Description[1], geneSetID = 1)\
+gseaplot(gse, by = "all", title = gse$Description[2], geneSetID = 2)\
+gseaplot(gse, by = "all", title = gse$Description[3], geneSetID = 3)\
+gseaplot(gse, by = "all", title = gse$Description[4], geneSetID = 4)\
+gseaplot(gse, by = "all", title = gse$Description[5], geneSetID = 5)\
+gseaplot(gse, by = "all", title = gse$Description[6], geneSetID = 6)\
+gseaplot(gse, by = "all", title = gse$Description[7], geneSetID = 7)\
+gseaplot(gse, by = "all", title = gse$Description[1], geneSetID = 1)\
+gseaplot(gse, by = "all", title = gse$Description[8], geneSetID = 8)\
+gseaplot(gse, by = "all", title = gse$Description[9], geneSetID = 9)\
+gseaplot(gse, by = "all", title = gse$Description[10], geneSetID = 10)\
+ gseaplot(gse, by = "all", title = gse$Description[11], geneSetID = 11)\
+gseaplot(gse, by = "all", title = gse$Description[9], geneSetID = 9)\
+gseaplot(gse, by = "all", title = gse$Description[12], geneSetID = 12)\
+gseaplot(gse, by = "all", title = gse$Description[13], geneSetID = 13)\
+gseaplot(gse, by = "all", title = gse$Description[14], geneSetID = 14)\
+gseaplot(gse, by = "all", title = gse$Description[15], geneSetID = 15)\
+gseaplot(gse, by = "all", title = gse$Description[16], geneSetID = 16)\
+gseaplot(gse, by = "all", title = gse$Description[17], geneSetID = 17)\
+gseaplot(gse, by = "all", title = gse$Description[18], geneSetID = 18)\
+gseaplot(gse, by = "all", title = gse$Description[17], geneSetID = 17)\
+gseaplot(gse, by = "all", title = gse$Description[19], geneSetID = 19)\
+gseaplot(gse, by = "all", title = gse$Description[20], geneSetID = 20)\
+gseaplot(gse, by = "all", title = gse$Description[21], geneSetID = 21)\
+ gseaplot(gse, by = "all", title = gse$Description[22], geneSetID = 22)\
+gseaplot(gse, by = "all", title = gse$Description[23], geneSetID = 23)\
+gseaplot(gse, by = "all", title = gse$Description[24], geneSetID = 24)\
+gseaplot(gse, by = "all", title = gse$Description[25], geneSetID = 25)\
+gseaplot(gse, by = "all", title = gse$Description[26], geneSetID = 26)\
+gseaplot(gse, by = "all", title = gse$Description[27], geneSetID = 27)\
+gseaplot(gse, by = "all", title = gse$Description[28], geneSetID = 28)\
+gseaplot(gse, by = "all", title = gse$Description[29], geneSetID = 29)\
+gseaplot(gse, by = "all", title = gse$Description[30], geneSetID = 30)\
+gseaplot(gse, by = "all", title = gse$Description[29], geneSetID = 29)\
+gseaplot(gse, by = "all", title = gse$Description[29], geneSetID = 29)\
+gseaplot(gse, by = "all", title = gse$Description[31], geneSetID = 31)\
+gseaplot(gse, by = "all", title = gse$Description[32], geneSetID = 32)\
+ gseaplot(gse, by = "all", title = gse$Description[33], geneSetID = 33)\
+ gseaplot(gse, by = "all", title = gse$Description[32], geneSetID = 32)\
+\
+\
+terms <- gse$Description[1:3]\
+\
+BiocManager::install("europepmc")\
+library(europepmc)\
+pmcplot(terms, 2010:2018, proportion=FALSE)\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# Convert gene IDs for gseKEGG function\
+# We will lose some genes here because not all IDs will be converted
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 ids<-bitr(names(original_gene_list), fromType = "ALIAS", toType = "ENTREZID", OrgDb=organism)\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+ # remove duplicate IDS (here I use "ENSEMBL", but it should be whatever was selected as keyType)
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 dedup_ids = ids[!duplicated(ids[c("ALIAS")]),]\
+dedup_ids\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# Create a new dataframe df2 which has only the genes which were successfully mapped using the bitr function above\
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 df2 = df[df$Gene.ID %in% dedup_ids$ALIAS,]\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# Create a new column in df2 with the corresponding ENTREZ IDs\
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 df2$Y = dedup_ids$ENTREZID\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# Create a vector of the gene unuiverse\
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 kegg_gene_list <- df2$log2FoldChange\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# Name vector with ENTREZ ids\
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 names(kegg_gene_list) <- df2$Y\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# omit any NA values\
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 kegg_gene_list<-na.omit(kegg_gene_list)\
+\
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# sort the list in decreasing order (required for clusterProfiler)
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 kegg_gene_list = sort(kegg_gene_list, decreasing = TRUE)\
+\
+\
+kegg_organism = "hsa"\
+kk2 <- gseKEGG(geneList     = kegg_gene_list, organism     = kegg_organism, nPerm        = 10000, minGSSize    = 3, maxGSSize    = 800, pvalueCutoff = 0.05, pAdjustMethod = "none", keyType       = "ncbi-geneid")\
+\
+KEGG dot plot\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+dotplot(kk2, showCategory = 10, title = "Enriched Pathways" , split=".sign") + facet_grid(.~.sign)\
+\
+kegg category net plot\
+# categorySize can be either 'pvalue' or 'geneNum'\
+cnetplot(kk2, categorySize="pvalue", foldChange=gene_list)
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+kegg ridge plot\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+ridgeplot(kk2) + labs(x = "enrichment distribution")
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0  \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+}
