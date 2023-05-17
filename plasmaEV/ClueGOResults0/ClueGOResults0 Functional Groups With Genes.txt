@@ -1,0 +1,14 @@
+Function	Groups	Group Genes
+cellular response to acid chemical	Group00	DNMT1|PDGFC|PRKD2|XBP1
+chromatin assembly	Group07	CTBP1|DNMT1|H1-10|H4C2|H4C3|H4C5|H4C8|HIRA|ING2|KDM1A|MCM7|NPM1|PARD3|POLE3|PRKD2
+establishment or maintenance of epithelial cell apical/basal polarity	Group03	LIN7A|MSN|PARD3|SH3BP1
+integral component of lumenal side of endoplasmic reticulum membrane	Group01	HLA-B|HLA-C|PRKD2
+membrane protein ectodomain proteolysis	Group02	ADAM10|PTPN3|TNFRSF1B
+negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage	Group11	ATAD5|CDKN2D|CTBP1|DNMT1|ING2|KDM1A|LCK|NME5|PRKD2|TMBIM6|TNFRSF1B|XBP1
+nucleosome organization	Group12	ANP32E|BUB1|CTBP1|DNMT1|H1-10|H4C2|H4C3|H4C5|H4C8|HIRA|KDM1A|MCM7|NPM1|NUF2|PARD3|POLE3|PPP2CA|RUVBL1|SMC5|STAG1|STAG3|UBASH3B
+phosphoprotein binding	Group06	BTRC|IGF2R|LCK|PRKD2|PTPN3|UBASH3B
+positive regulation of blood vessel endothelial cell migration	Group09	FLT4|HDAC9|JUP|PIK3CD|PRKD2|RHOJ|SH3BP1
+positive regulation of cyclin-dependent protein serine/threonine kinase activity	Group05	CCND2|CCNL1|CDKN2D|PRKD2|SPDYE14
+positive regulation of histone deacetylation	Group10	ATAD5|CTBP1|DNMT1|ING2|KDM1A|MAPT|PARD3|POLE3|PRKD2
+positive regulation of protein ubiquitination	Group08	BTRC|DCUN1D2|DCUN1D5|KDM1A|NPM1|RNF217|TICAM1
+protein kinase inhibitor activity	Group04	CDKN2D|GSKIP|NPM1|PRKAR2A

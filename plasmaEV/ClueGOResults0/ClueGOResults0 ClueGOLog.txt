@@ -1,0 +1,54 @@
+Selection Citeria:
+Statistical Test Used = Enrichment/Depletion (Two-sided hypergeometric test)
+Correction Method Used = Bonferroni step down
+Min GO Level = 3
+Max GO Level = 8
+Cluster #1
+Sample File Name = File selection: 
+Number of Genes = 3
+Min Percentage = 4.0
+
+GO Fusion = true
+GO Group = true
+Kappa Score Threshold = 0.4
+Over View Term = SmallestPValue
+Group By Kappa Statistics = true
+Initial Group Size = 1
+Sharing Group Percentage = 50.0
+
+ClueGO Log:
+### All results were created with ClueGO v2.5.9 ###
+Organism analyzed: Homo Sapiens [9606]
+Identifier types used: [SymbolID]
+Evidence codes used: [All]
+#Genes in GO_ImmuneSystemProcess-EBI-UniProt-GOA-ACAP-ARAP_25.05.2022_00h00 : 3044
+#Genes in GO_MolecularFunction-EBI-UniProt-GOA-ACAP-ARAP_25.05.2022_00h00 : 18417
+#Genes in GO_CellularComponent-EBI-UniProt-GOA-ACAP-ARAP_25.05.2022_00h00 : 19121
+#Genes in GO_BiologicalProcess-EBI-UniProt-GOA-ACAP-ARAP_25.05.2022_00h00 : 18085
+
+#All unique genes in selected ontologies: 19840 (reference set for hypergeometric test)
+
+#Genes from Cluster#1: unique uploaded ids 334 -> corresponding genes 334, with 0 (0.0%) missing  -> All genes were recognized by ClueGO.
+#Genes with functional annotations in all selected Ontologies from Cluster#1: 224 (67.07%) -> 110 (32.93%) are not functionally annotated in any selected Ontology!
+ -> To improve the % of annotated genes, chose additional ontologies.
+
+#Genes from all Clusters associated to 113 representative Terms and Pathways (after applying general selection criteria): 95 (28.44%)
+#Genes from all Clusters associated to 35 representative Terms and Pathways (after fusion selection criteria): 56 (16.77%)
+
+KappaScore Grouping:
+Iteration: 0 with 15 groups
+Iteration: 1 with 14 groups
+Iteration: 2 with 13 groups
+Final KappaScore groups  = 13
+# Terms not grouped  = 0
+
+# Merge redundant groups with >50.0% overlap
+Final group size after merging: 13
+
+#GO All Terms Specific for Cluster #1: 35
+#GO Terms: 35
+#GO Term Connections: 37
+List of missing Genes -> make sure the ids exists or are written propperly -> if yes make sure you have their annotation in ClueGO!
+Cluster #1
+
+
